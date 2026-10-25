@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cy68dsxw0872u"]
+
+[ext_resource type="Script" uid="uid://cefh2enw0bg7j" path="res://scripts/inimigo.gd" id="1_dc5j5"]
+[ext_resource type="Texture2D" uid="uid://c5ywcve3si8s4" path="res://sprites/mobs_carnivoras_128x64.png" id="1_yagdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc5j5"]
+atlas = ExtResource("1_yagdu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3jr6"]
+atlas = ExtResource("1_yagdu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xex7k"]
+atlas = ExtResource("1_yagdu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8vxb"]
+atlas = ExtResource("1_yagdu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugors"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc5j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3jr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xex7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8vxb")
+}],
+"loop": 1,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yagdu"]
+size = Vector2(10, 6)
+
+[node name="inimigo" type="CharacterBody2D" unique_id=1543057983 groups=["inimigo"]]
+collision_layer = 4
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_dc5j5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1556236367]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_ugors")
+animation = &"walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1536316939]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_yagdu")

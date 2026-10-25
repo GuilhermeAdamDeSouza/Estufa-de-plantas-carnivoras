@@ -142,7 +142,11 @@ animations = [{
 radius = 5.0
 height = 16.0
 
-[node name="jogador" type="CharacterBody2D" unique_id=1306509595]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugors"]
+radius = 6.0
+
+[node name="jogador" type="CharacterBody2D" unique_id=1306509595 groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_m0gj8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=353956779]
@@ -153,3 +157,11 @@ animation = &"down"
 shape = SubResource("CapsuleShape2D_feslh")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=932244367]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1964347224]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=574618211]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_ugors")
