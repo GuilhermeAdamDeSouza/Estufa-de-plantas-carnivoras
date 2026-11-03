@@ -145,6 +145,9 @@ height = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ugors"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0gj8"]
+radius = 20.0
+
 [node name="jogador" type="CharacterBody2D" unique_id=1306509595 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_m0gj8")
@@ -157,6 +160,7 @@ animation = &"down"
 shape = SubResource("CapsuleShape2D_feslh")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=932244367]
+zoom = Vector2(3, 3)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1964347224]
 collision_layer = 0
@@ -165,3 +169,19 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=574618211]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_ugors")
+
+[node name="Ataque" type="Area2D" parent="." unique_id=1369350317]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ataque" unique_id=1714487031]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_m0gj8")
+
+[node name="Golpe" type="ColorRect" parent="Ataque" unique_id=21137008]
+visible = false
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+color = Color(1, 1, 1, 0.3529412)
