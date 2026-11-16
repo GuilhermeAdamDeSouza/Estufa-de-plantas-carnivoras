@@ -14,4 +14,5 @@ Origem do código: Material do professor e algumas adaptações por mim e alguma
 
 Origem da arte: Toda a arte foi feita no Claude!, tinha pego algumas na internet mas preferi usar um padrão de pixels e arte que usava nas aulas anteriores e preferi manter um padrão!
 
+Jogue o jogo na Web! https://birulinha069.itch.io/estufa-de-plantas-carnivoras
 
