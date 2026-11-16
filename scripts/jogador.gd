@@ -9,7 +9,7 @@ var pode_atacar := true
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var ataque: Area2D = $Ataque
-@onready var golpe: ColorRect = $Ataque/Golpe
+@onready var golpe: AnimatedSprite2D = $Ataque/AnimGolpe
 
 func _process(_delta: float) -> void:
 	# Tem inimigo encostando em mim?
@@ -44,6 +44,12 @@ func levar_dano() -> void:
 		get_tree().current_scene.perder()
 		return
 		
+	invencivel = true
+	modulate = Color.RED
+	await get_tree().create_timer(1.0).timeout
+	modulate = Color.WHITE
+	invencivel = false
+		
 	# Um segundo de invencibilidade, meio transparente.
 	invencivel = true
 	modulate.a = 0.4
@@ -58,7 +64,8 @@ func atacar() -> void:
 	# O clarão dura 0,1 s; o próximo golpe só sai 0,4 s depois deste.
 	pode_atacar = false
 	golpe.visible = true
-	await get_tree().create_timer(0.1).timeout
-	golpe.visible = false
+	golpe.play("atack")
 	await get_tree().create_timer(0.3).timeout
+	golpe.visible = false
+	await get_tree().create_timer(0.14).timeout
 	pode_atacar = true
