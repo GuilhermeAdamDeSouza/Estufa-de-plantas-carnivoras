@@ -14,5 +14,12 @@ Origem do código: Material do professor e algumas adaptações por mim e alguma
 
 Origem da arte: Toda a arte foi feita no Claude!, tinha pego algumas na internet mas preferi usar um padrão de pixels e arte que usava nas aulas anteriores e preferi manter um padrão!
 
+- COMO JOGAR - 
+Movimentação do personagem W A S D 
+Atacar ESPAÇO
+
+Você tem 60 segundos para sobreviver preso dentro de uma estufa de plantas carnivoras, quando o tempo zerar a porta ira se abrir automaticamente e você devera ir até ela com vida para fugir!
+
+
 Jogue o jogo na Web! https://birulinha069.itch.io/estufa-de-plantas-carnivoras
 
