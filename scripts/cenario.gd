@@ -26,7 +26,8 @@ func _on_horda_timeout() -> void:
 	horda.wait_time = max(0.5, horda.wait_time * 0.95)
 
 func _on_relogio_timeout() -> void:
-	vencer()
+	$Saida.visible = true
+	$Saida.monitoring = true
 
 # call_deferred: troca de cena só no fim do quadro, quando a física terminou.
 func vencer() -> void:
@@ -34,3 +35,8 @@ func vencer() -> void:
 
 func perder() -> void:
 	get_tree().change_scene_to_file.call_deferred("res://scenes/derrota.tscn")
+
+
+func _on_saida_body_entered(body: Node2D) -> void:
+	vencer()
+	 # Replace with function body.

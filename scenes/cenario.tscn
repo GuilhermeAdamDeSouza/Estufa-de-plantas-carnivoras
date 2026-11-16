@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bj7oam0r1f6ao" path="res://tileset/tileclaudio/estufa_tileset_128x128.png" id="1_i5ouh"]
 [ext_resource type="PackedScene" uid="uid://es2mso3li52k" path="res://entities/jogador.tscn" id="2_2p5gn"]
 [ext_resource type="PackedScene" uid="uid://cy68dsxw0872u" path="res://entities/inimigo.tscn" id="3_4xtve"]
+[ext_resource type="Texture2D" uid="uid://bjbxu7s0e7qn7" path="res://tileset/tileclaudio/porta_aberta_32x32.png" id="5_paand"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kfbu0"]
 vertices = PackedVector2Array(655.02344, 266.8828, 758.14844, 312.52344, 715.03125, 312.52344, 641.15625, 312.15625, 641.2031, 296.3125, 1110, 30.953125, 1110, 614, 847.02344, 426.8828, 761.6719, 346.4375, 529.15625, 376.15625, 697.6719, 346.4375, 710.53906, 344.4375, 809.6406, 422.89844, 641.15625, 424.15625, 592.8594, 424.15625, 519.5625, 410, 42, 614, 490.40625, 473.96875, 631.5625, 458, 807.5, 456.02344, 833.2031, 456.3125, 105.640625, 438.89844, 105.24219, 445.0703, 104.609375, 429.47656, 561.15625, 104.15625, 634.40625, 57.96875, 641.15625, 152.15625, 592.8594, 152.15625, 551.5625, 138, 561.15625, 200.15625, 602.6406, 186, 631.5625, 186, 641.15625, 248.15625, 592.8594, 248.15625, 551.5625, 234, 646.53906, 344.4375, 631.5625, 346, 129.20313, 472.3125, 134.21875, 461.60938, 134.25781, 474.1172, 497.20313, 136.3125, 511.02344, 106.88281, 512.8594, 104.15625, 522.6406, 138, 512.8594, 200.15625, 480.85938, 376.15625, 438.2578, 474.1172, 426.40625, 473.96875, 374.2578, 474.1172, 346.40625, 473.96875, 294.2578, 474.1172, 266.40625, 473.96875, 214.25781, 474.1172, 186.40625, 473.96875, 116.21875, 489.53906, 636.40625, 264.89063, 134.13281, 429.89063, 134.15625, 441.9297, 602.6406, 282, 616.40625, 282, 615.5, 296.02344, 592.8594, 312.15625, 694.14844, 312.52344, 651.03125, 312.52344, 602.6406, 346, 633.3203, 30.953125, 582.2578, 58.117188, 570.40625, 57.96875, 569.3281, 31.421875, 582.1797, 31.351563, 518.2578, 58.117188, 438.1328, 429.89063, 424.60938, 429.47656, 374.1328, 429.89063, 344.60938, 429.47656, 294.1328, 429.89063, 264.60938, 429.47656, 214.13281, 429.89063, 184.60938, 429.47656, 42, 30.953125, 518.1797, 30.953125, 473.64063, 102.89844, 602.6406, 458, 488.60938, 429.47656, 490.64063, 410, 54.132813, 429.89063, 471.5, 136.02344, 118.24219, 472.1797, 92.59375, 488.46875, 522.6406, 234, 54.257813, 474.1172, 89.99219, 474.0078)
@@ -218,6 +219,9 @@ texture = ExtResource("1_i5ouh")
 [sub_resource type="TileSet" id="TileSet_i5ouh"]
 sources/0 = SubResource("TileSetAtlasSource_2p5gn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbu0"]
+size = Vector2(31, 30.5)
+
 [node name="cenario" type="Node2D" unique_id=780559823]
 script = ExtResource("1_4xtve")
 cena_inimigo = ExtResource("3_4xtve")
@@ -234,7 +238,7 @@ tile_map_data = PackedByteArray("AAACABYAAAAEAAAAAAADABYAAAAEAAAAAAAEABYAAAADAAA
 tile_set = SubResource("TileSet_i5ouh")
 
 [node name="Jogador" parent="." unique_id=1306509595 instance=ExtResource("2_2p5gn")]
-position = Vector2(577, 35)
+position = Vector2(577, 74)
 
 [node name="Nascedouros" type="Node2D" parent="." unique_id=1607347593]
 
@@ -272,5 +276,20 @@ offset_right = 40.0
 offset_bottom = 84.0
 theme_override_font_sizes/font_size = 32
 
+[node name="Saida" type="Area2D" parent="." unique_id=1928264618]
+visible = false
+position = Vector2(576, 16)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saida" unique_id=1522424754]
+position = Vector2(1, -0.25)
+shape = SubResource("RectangleShape2D_kfbu0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Saida" unique_id=99394118]
+texture = ExtResource("5_paand")
+
 [connection signal="timeout" from="Horda" to="." method="_on_horda_timeout"]
 [connection signal="timeout" from="Relogio" to="." method="_on_relogio_timeout"]
+[connection signal="body_entered" from="Saida" to="." method="_on_saida_body_entered"]
